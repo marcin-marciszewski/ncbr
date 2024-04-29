@@ -8,6 +8,7 @@ use Monolog\Attribute\WithMonologChannel;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 
+#[WithMonologChannel('request')]
 class ExceptionListener
 {
     public function __construct(private LoggerInterface $logger)
