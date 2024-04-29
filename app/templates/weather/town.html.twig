@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello WeatherController!{% endblock %}
+
+{% block body %}
+<h1>Dane pogodowe dla: {{stacja}}</h1>
+<main>
+    <ul>
+        <li>Nazwa miejscowości: {{stacja}}</li>
+        <li>Godzina odczytu: {{godzina_pomiaru}}.00</li>
+        <li>Data odczytu: {{data_pomiaru|date("d.m.Y")}}</li>
+        <li>Zmierzona temperatura: {{temperatura}}°C</li>
+    </ul>
+</main>
+{% endblock %}

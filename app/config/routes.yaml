@@ -1,0 +1,10 @@
+controllers:
+  resource:
+    path: ../src/Controller/
+    namespace: App\Controller
+  type: attribute
+# town_weather:
+#   path:
+#     en: /weather/{town}
+#     pl: /pogoda/{miasto}
+#   controller: App\Controller\WeatherController::town
