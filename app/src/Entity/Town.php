@@ -2,11 +2,8 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use App\Repository\TownRepository;
 use Symfony\Component\Serializer\Annotation\SerializedName;
 
-#[ORM\Entity(repositoryClass: TownRepository::class)]
 class Town
 {
     #[SerializedName('id_stacji')]
