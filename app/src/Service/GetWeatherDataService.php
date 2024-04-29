@@ -34,20 +34,19 @@ class GetWeatherDataService
     {
         $url = 'https://danepubliczne.imgw.pl/api/data/synop/station/'. $town;
 
-        $ch = curl_init($url);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         $response = curl_exec($ch);
         $httpStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
 
-
-        if ($httpStatus != 200) {
-            $decodedMsg = json_decode($response)->message;
+        if ($httpStatus !== 200) {
+            $decodedMsg = is_string($response) ? json_decode($response)->message : '';
             throw new ValidationException($decodedMsg ?: 'Request failed with status code '. $httpStatus);
         }
 
-        curl_close($ch);
-
-        return $response;
+        return is_string($response) ? $response : '';
     }
 }

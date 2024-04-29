@@ -20,7 +20,7 @@ class ExceptionListener
         $exception = $event->getThrowable();
 
         if ($exception instanceof ValidationException) {
-            $errorMsg = $exception->getMessage();
+            $errorMsg = !empty($exception->getMessage()) ? $exception->getMessage() : 'Unknown error';
 
             $response = new Response();
             $response->headers->set('Content-Type', 'application/json');
