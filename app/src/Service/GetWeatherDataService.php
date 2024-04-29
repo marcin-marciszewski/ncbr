@@ -11,11 +11,11 @@ class GetWeatherDataService
 {
     public function __construct(
         private SerializerInterface $serializer,
-        private ValidatorInterface $validator
     ) {
     }
 
-    public function getWeatherDataForTown(string $town, $full = false): array|string
+
+    public function getWeatherDataForTown(string $town, bool $full = false): array|string
     {
         $apiResponse = $this->getData($town);
         $weatherData = $this->serializer->deserialize($apiResponse, Town::class, 'json');
@@ -23,8 +23,8 @@ class GetWeatherDataService
         $basicWeatherData = [
             "stacja" => $weatherData->getStationName(),
             "data_pomiaru" => $weatherData->getReadingDate(),
-            "godzina_pomiaru" => $weatherData?->getReadingHour(),
-            "temperatura" => $weatherData?->getTemperature()
+            "godzina_pomiaru" => $weatherData->getReadingHour(),
+            "temperatura" => $weatherData->getTemperature()
         ];
 
         return $full ? $apiResponse : $basicWeatherData;
