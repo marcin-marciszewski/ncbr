@@ -1,4 +1,4 @@
-# NCBR+ - task
+# NCBR+ ( env files and secret keys only exposed for this task purposes)
 
 ### Instalation:
 
